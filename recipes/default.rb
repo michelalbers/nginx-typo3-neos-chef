@@ -37,3 +37,9 @@ end
 apt_package "graphicsmagick" do
   action :install
 end
+
+# Run Composer install for neos
+composer_project "/vagrant/www/Neos" do
+    dev false
+    action :install
+end
