@@ -20,7 +20,7 @@ end
 
 # Enable PHP Error Logging
 php_fpm_pool "www" do
-  php_options 'php_flag[display_errors]' => 'on', 'php_admin_flag[display_errors]' => 'on', 'php_admin_value[memory_limit]' => '1024M', 'php_admin_value[upload_max_filesize]' => '1024M', 'php_admin_value[post_max_size]' => '1024M', 'php_admin_value[max_execution_time]' => '240'
+  php_options 'php_flag[display_errors]' => 'on', 'php_admin_flag[display_errors]' => 'on', 'php_admin_value[memory_limit]' => '1024M', 'php_admin_value[upload_max_filesize]' => '1024M', 'php_admin_value[post_max_size]' => '1024M', 'php_admin_value[max_execution_time]' => '240', 'php_admin_value[date.timezone]' => 'Europe/Berlin'
 end
 
 # Install php-mysql
@@ -44,6 +44,8 @@ apt_package "git" do
 end
 
 # Run Composer install for neos
-composer_project "/vagrant/www/Neos" do
+composer_project "#{node['ifserver-neos']['composer_root']}"  do
+    quiet false
+    dev false
     action :install
 end
