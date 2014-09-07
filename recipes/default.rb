@@ -43,7 +43,20 @@ apt_package "git" do
   action :install
 end
 
-# Install custom php.ini
+# Install custom cli php.ini
+template "/etc/php5/cli/php.ini" do
+  action :delete
+end
+
+template "/etc/php5/cli/php.ini" do
+  source 'php.ini.erb'
+  owner 'root'
+  group node['root_group']
+  mode '0644'
+  action :create
+end
+
+# Install custom fpm php.ini
 template "/etc/php5/fpm/php.ini" do
   action :delete
 end
