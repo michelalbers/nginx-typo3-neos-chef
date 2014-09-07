@@ -68,7 +68,7 @@ template "/etc/php5/fpm/php.ini" do
   mode '0644'
   action :create
   notifies :reload, 'service[nginx]'
-  notifies :reload, 'service[php5-fpm]'
+  notifies :reload, 'service[php-fpm]'
 end
 
 # Run Composer install for neos
