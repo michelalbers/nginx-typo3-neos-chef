@@ -43,6 +43,21 @@ apt_package "git" do
   action :install
 end
 
+# Install custom php.ini
+template "/etc/php5/fpm/php.ini" do
+  action :delete
+end
+
+template "/etc/php5/fpm/php.ini" do
+  source 'php.ini.erb'
+  owner 'root'
+  group node['root_group']
+  mode '0644'
+  action :create
+  notifies :reload, 'service[nginx]'
+  notifies :reload, 'service[php5-fpm]'
+end
+
 # Run Composer install for neos
 composer_project "#{node['ifserver-neos']['composer_root']}"  do
     quiet false
