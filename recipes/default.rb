@@ -70,10 +70,3 @@ template "/etc/php5/fpm/php.ini" do
   notifies :reload, 'service[nginx]'
   notifies :reload, 'service[php-fpm]'
 end
-
-# Run Composer install for neos
-composer_project "#{node['ifserver-neos']['composer_root']}"  do
-    quiet false
-    dev false
-    action :install
-end
