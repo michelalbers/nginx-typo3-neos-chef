@@ -28,6 +28,11 @@ apt_package "php5-mysql" do
   action :install
 end
 
+# Install plain php
+apt_package "php5" do
+  action :install
+end
+
 # Install php5-gd
 apt_package "php5-gd" do
   action :install
