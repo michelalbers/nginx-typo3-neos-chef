@@ -65,7 +65,7 @@ template "/etc/php5/cli/php.ini" do
 end
 
 # Install some speedup magic
-apt_package "php5-pear" do
+apt_package "php-pear" do
   action :install
 end
 
