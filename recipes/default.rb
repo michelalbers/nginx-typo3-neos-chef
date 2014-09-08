@@ -52,7 +52,7 @@ end
 directory "/etc/php5/cli" do
   owner 'root'
   group node['root_group']
-  mode '0644'
+  mode '0755'
   action :create
 end
 
@@ -60,7 +60,7 @@ template "/etc/php5/cli/php.ini" do
   source 'php.ini.erb'
   owner 'root'
   group node['root_group']
-  mode '0644'
+  mode '0755'
   action :create
 end
 
