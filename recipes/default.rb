@@ -77,14 +77,6 @@ apt_package "php5-dev" do
   action :install
 end
 
-php_pear "yaml-beta" do
-  action :install
-end
-
-php_pear "igbinary" do
-  action :install
-end
-
 # Install custom fpm php.ini
 template "/etc/php5/fpm/php.ini" do
   action :delete
