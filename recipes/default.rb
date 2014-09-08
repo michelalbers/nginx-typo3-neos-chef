@@ -43,6 +43,11 @@ apt_package "git" do
   action :install
 end
 
+# Install php5-cli
+apt_package "php5-cli" do
+  action :install
+end
+
 # Install custom cli php.ini
 directory "/etc/php5/cli" do
   owner 'root'
