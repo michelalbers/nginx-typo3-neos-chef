@@ -64,6 +64,10 @@ template "/etc/php5/cli/php.ini" do
   action :create
 end
 
+apt_package "php5-pear" do
+  action :install
+end
+
 # Install custom fpm php.ini
 template "/etc/php5/fpm/php.ini" do
   action :delete
