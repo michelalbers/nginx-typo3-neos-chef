@@ -64,7 +64,24 @@ template "/etc/php5/cli/php.ini" do
   action :create
 end
 
+# Install some speedup magic
 apt_package "php5-pear" do
+  action :install
+end
+
+apt_package "libyaml-dev" do
+  action :install
+end
+
+apt_package "php5-dev" do
+  action :install
+end
+
+php_pear "yaml-beta" do
+  action :install
+end
+
+php_pear "igbinary" do
   action :install
 end
 
