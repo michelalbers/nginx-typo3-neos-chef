@@ -20,7 +20,7 @@ end
 
 # Enable PHP Error Logging
 php_fpm_pool "www" do
-  php_options 'php_flag[display_errors]' => 'on', 'php_admin_flag[display_errors]' => 'on', 'php_admin_value[memory_limit]' => '1024M', 'php_admin_value[upload_max_filesize]' => '1024M', 'php_admin_value[post_max_size]' => '1024M', 'php_admin_value[max_execution_time]' => '240', 'php_admin_value[date.timezone]' => 'Europe/Berlin'
+  php_options 'catch_workers_output' => 'yes', 'php_flag[display_errors]' => 'on', 'php_admin_flag[display_errors]' => 'on', 'php_admin_value[memory_limit]' => '1024M', 'php_admin_value[upload_max_filesize]' => '1024M', 'php_admin_value[post_max_size]' => '1024M', 'php_admin_value[max_execution_time]' => '240', 'php_admin_value[date.timezone]' => 'Europe/Berlin', 'php_admin_value[error_log]' => '/var/log/fpm-php.www.log', 'php_admin_flag[log_errors]' => 'on'
 end
 
 # Install php-mysql
