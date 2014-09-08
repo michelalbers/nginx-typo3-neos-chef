@@ -28,11 +28,6 @@ apt_package "php5-mysql" do
   action :install
 end
 
-# Install plain php
-apt_package "php5" do
-  action :install
-end
-
 # Install php5-gd
 apt_package "php5-gd" do
   action :install
@@ -49,8 +44,11 @@ apt_package "git" do
 end
 
 # Install custom cli php.ini
-template "/etc/php5/cli/php.ini" do
-  action :delete
+directory "/etc/php5/cli" do
+  owner 'root'
+  group node['root_group']
+  mode '0644'
+  action :create
 end
 
 template "/etc/php5/cli/php.ini" do
